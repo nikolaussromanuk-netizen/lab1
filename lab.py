@@ -112,7 +112,25 @@ def draw_animation(): #нарисовать анимцаию светофора 
             for k in range(27):
                 print(f"{CSI}1A{ZERO}{ERAZE}", end="", flush=True)
             
-    
+def draw_diagram():
+    a = 0 # кол-во чисел от 5 до 10
+    b = 0 # кол-во чисел от -5 до - 10
+
+    file = open('sequence.txt')
+    for number in file:
+        if float(number) <= 10.0 and float(number) >= 5.0:
+            a += 1
+        if float(number) >= -10.0 and float(number) <= -5.0:
+            b += 1
+    file.close()
+
+    sum = a + b
+
+    chance_a = int(100.0 * (a / sum))
+    chance_b = 100 - chance_a
+
+    print(f"{CSI}48;5;27m{' ' * int(a / 5)}{DEF} - {chance_a}%")
+    print(f"{CSI}48;5;124m{' ' * int(b / 5)}{DEF} - {chance_b}%")
 
 if __name__ == "__main__":
     #1 задание нарисовать флаг Финляндии
@@ -122,5 +140,8 @@ if __name__ == "__main__":
     #draw_pattern(4, 4)
 
     #3 задание нарисовать анмиацию на 3-4 кадра
-    draw_animation()
+    #draw_animation()
+
+    #4 задание нарисовать диаграмму распределений чисел от 5 до 10 и от -5 до -10
+    #draw_diagram()
     pass
