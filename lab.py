@@ -164,5 +164,5 @@ if __name__ == "__main__":
     #draw_diagram()
     
     #задание 5: рисует функцию y = x / 2
-    draw_func(10)
+    #draw_func(10)
     pass
