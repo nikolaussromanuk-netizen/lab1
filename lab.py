@@ -132,6 +132,24 @@ def draw_diagram():
     print(f"{CSI}48;5;27m{' ' * int(a / 5)}{DEF} - {chance_a}%")
     print(f"{CSI}48;5;124m{' ' * int(b / 5)}{DEF} - {chance_b}%")
 
+def draw_y(n):
+    y = float(n)
+    for i in range(2 * n, -1, -1):
+        print(y)
+        y -= 0.5
+
+def draw_x(n):
+    print(f"{CSI}4C", end="", flush=True)
+    for x in range(0, n + 1):
+        print(f"{CSI}{(x + 1)}A*{CSI}{(x + 1)}B", end="", flush=True)
+        print(x, end=" ")
+    print()
+
+
+def draw_func(x):
+    draw_y(x // 2 + 1)
+    draw_x(x)
+
 if __name__ == "__main__":
     #1 задание нарисовать флаг Финляндии
     #draw_flag(18, 6)
@@ -144,4 +162,7 @@ if __name__ == "__main__":
 
     #4 задание нарисовать диаграмму распределений чисел от 5 до 10 и от -5 до -10
     #draw_diagram()
+    
+    #задание 5: рисует функцию y = x / 2
+    draw_func(10)
     pass
