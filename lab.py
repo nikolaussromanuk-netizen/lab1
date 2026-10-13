@@ -1,5 +1,4 @@
 import time
-import os
 
 CSI = "\x1b["
 ZERO = f"{CSI}0G"
@@ -141,8 +140,8 @@ def draw_y(n):
 def draw_x(n):
     print(f"{CSI}4C", end="", flush=True)
     for x in range(0, n + 1):
-        print(f"{CSI}{(x + 1)}A*{CSI}{(x + 1)}B", end="", flush=True)
-        print(x, end=" ")
+        print(x, end="")
+        print(f"{CSI}1D{CSI}{(x + 1)}A*{CSI}{(x + 1)}B{CSI}1C", end=" ", flush=True)
     print()
 
 
